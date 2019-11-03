@@ -47,3 +47,6 @@ Thumbs.db
 
 #semantic
 semantic
+
+#api-key
+/src/app/api-key.ts

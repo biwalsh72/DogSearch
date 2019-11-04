@@ -1,8 +1,8 @@
 .container {
     padding: 0 !important;
     margin: 0 !important;
-    position:absolute;
+    position: absolute;
     height: 100%;
     min-width: 100%;
-    background: #373737;
+    /*border: 1px solid black;*/
 }

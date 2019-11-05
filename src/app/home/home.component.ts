@@ -18,8 +18,10 @@ export class HomeComponent {
   private unsubscribe$: Subject<any> = new Subject();
 
   videos: any[];
+  query: string = '';
 
   constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService) { }
+
 
   ngOnInit() {
     this.spinner.show()
@@ -28,13 +30,14 @@ export class HomeComponent {
     }, 3000)
     this.videos = [];
     this.youtubeservice
-      .getDogs(1000)
+      .getDogs(this.query,20)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(lista => {
         for (let element of lista["items"]) {
           this.videos.push(element)
         }
       })
+      console.log(this.videos.length);
   }
 
 }

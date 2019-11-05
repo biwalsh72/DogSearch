@@ -1,6 +1,6 @@
 <div class="column" id="videos">
   <div class="row" id="row1" ng-controller="search">
-    <input matInput type="text" id="searchbox" placeholder="Type here...">
+    <input matInput ng-model = "query" type="text" id="searchbox" placeholder="Type here...">
   </div>
 
   <div class="row" id="row2">
@@ -16,4 +16,4 @@
     </div>
   </div>
 
-  <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()"></div>
+  <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"></div>

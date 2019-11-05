@@ -11,12 +11,12 @@ import { map } from 'rxjs/operators';
 export class YoutubeService {
 
   private api: string = API_KEY.API_KEY.apikey;
-  private url: string = 'https://www.googleapis.com/youtube/v3/search?key=' + this.api + '&part=snippet&type=video&q=dog'
 
   constructor(private http: HttpClient) { }
 
-  getDogs(maxResults): Observable<Object> {
-    return this.http.get(this.url)
+  getDogs(query, maxResults): Observable<Object> {
+    let url = 'https://www.googleapis.com/youtube/v3/search?key=' + this.api + '&part=snippet&type=video&q=dog+' + query + '&maxResults=' + maxResults;
+    return this.http.get(url)
       .pipe(map((res) => {
         return res;
       }))

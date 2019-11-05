@@ -5,7 +5,13 @@
 
   <div class="row" id="row2">
     <div class="column" id="searchResults">
-
+      <div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">
+        <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+          <img [src]="video.snippet.thumbnails.medium.url" class="card-img-top" alt="..."></a>
+          <h5 class="card-title mb-0">
+            <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
+            </a></h5>
+      </div>
     </div>
   </div>
 

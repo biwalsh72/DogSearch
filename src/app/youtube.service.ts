@@ -15,18 +15,10 @@ export class YoutubeService {
 
   constructor(private http: HttpClient) { }
 
-  search(): Observable<Video[]> {
+  getDogs(maxResults): Observable<Object> {
     return this.http.get(this.url)
-      .pipe(map(response => {
-        console.log('response: ', response);
-        return <any>response['items'].map(item => {
-          return new Video({
-            id: item.id.videoId,
-            title: item.snippet.title,
-            description: item.snippet.description,
-            thumbnailUrl: item.snippet.thumbnails.high.url
-          });
-        });
-      }));
+      .pipe(map((res) => {
+        return res;
+      }))
   }
 }

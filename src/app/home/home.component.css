@@ -11,6 +11,7 @@
 }
 
 #searchbox {
+  width: 98%;
   z-index: 200;
   background: none;
   border: none;
@@ -45,9 +46,36 @@
 }
 
 .video-thumbnail {
+  width: 80%;
   border-radius: 4px;
 }
 
 .video-list {
   margin-top: 1rem;
+}
+
+.description {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #373737;
+  font-size: 12px;
+}
+
+.video-title {
+  margin: 0;
+  font-size: 15px;
+}
+
+#searchResults::-webkit-scrollbar {
+  margin: 0;
+  padding: 0;
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+#searchResults::-webkit-scrollbar-thumb {
+  background-color: #616161;
+}
+
+#form1 {
+  height: 0%;
 }

@@ -19,9 +19,15 @@ export class HomeComponent {
 
   videos: any[];
   query: string = '';
+  search: any;
 
   constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService) { }
 
+  //research when a new key is pressed
+  onKey(event: any) {
+    this.query = event.target.value;
+    return this.ngOnInit();
+  }
 
   ngOnInit() {
     this.spinner.show()

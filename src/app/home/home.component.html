@@ -1,6 +1,6 @@
 <div class="column" id="videos">
   <div class="row" id="row1" ng-controller="search">
-    <input matInput ng-model = "query" type="text" id="searchbox" placeholder="Type here...">
+      <input matInput name="query" type="text" id="searchbox" placeholder="Type here for other dog related videos..." (keyup)="onKey($event)">
   </div>
 
   <div class="row" id="row2">
@@ -8,12 +8,10 @@
       <div *ngFor="let video of videos" class="video-list">
         <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
           <img [src]="video.snippet.thumbnails.medium.url" class="video-thumbnail" alt="..."></a>
-        <p class="card-title mb-0">
+        <p class="video-title">
           <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
           </a></p>
         <p class="description">{{ video.snippet.description }}</p>
       </div>
     </div>
   </div>
-
-  <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"></div>

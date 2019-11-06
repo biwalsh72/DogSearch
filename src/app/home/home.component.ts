@@ -1,10 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { map, switchMap, debounceTime, distinctUntilChanged, filter, takeUntil } from 'rxjs/operators';
-import API_KEY from '../api-key';
-import { Video } from '../home/video.model'
 import { YoutubeService } from '../youtube.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -23,7 +19,7 @@ export class HomeComponent {
 
   constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService) { }
 
-  //research when a new key is pressed
+  //re-search when a new key is pressed
   onKey(event: any) {
     this.query = event.target.value;
     return this.ngOnInit();
@@ -35,14 +31,15 @@ export class HomeComponent {
       this.spinner.hide()
     }, 3000)
     this.videos = [];
-    this.youtubeservice
-      .getDogs(this.query,20)
+    //FOR QUOTA LIMIT SAKE ONLY CALL FUNCTION WHEN NEEDED
+    /*this.youtubeservice
+      .getDogs(this.query,10)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(lista => {
         for (let element of lista["items"]) {
           this.videos.push(element)
         }
-      })
+      })*/
       console.log(this.videos.length);
   }
 

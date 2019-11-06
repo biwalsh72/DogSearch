@@ -5,6 +5,7 @@
 
   <div class="row" id="row2">
     <div class="column" id="searchResults">
+      <p class="searchterm">Current Search: dog {{ query }}</p>
       <div *ngFor="let video of videos" class="video-list">
         <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
           <img [src]="video.snippet.thumbnails.medium.url" class="video-thumbnail" alt="..."></a>

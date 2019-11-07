@@ -29,6 +29,40 @@
 }
 
 #row4 {
+  background: #f1f1f1;
   bottom: 0;
   height: 50%;
+}
+
+.title {
+    display: block;
+    font-size: 1.5rem;
+    width: 95%;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-title {
+    margin-top: .2rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.video-link {
+    width: 95%;
+    color: #5cacf7;
+}
+
+.desc {
+    border-top: 1px solid rgb(189, 189, 189);
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #fefeff;
+}
+
+.description {
+    margin-top: .5rem;
+    text-align: center;
 }

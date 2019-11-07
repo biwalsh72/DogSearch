@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { map, switchMap, debounceTime, distinctUntilChanged, filter, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { YoutubeService } from '../youtube.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 

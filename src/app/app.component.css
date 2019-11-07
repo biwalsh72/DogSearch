@@ -6,3 +6,11 @@
     min-width: 100%;
     /*border: 1px solid black;*/
 }
+
+.player {
+    position: absolute;
+    right: 0;
+    width: 67%;
+    height: 100%;
+}
+

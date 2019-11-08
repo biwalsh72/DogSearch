@@ -15,7 +15,8 @@ export class HomeComponent {
 
   videos: any[];
   query: string = '';
-  search: any;
+  video: any;
+  pageToken: string = null;
 
   constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService) { }
 
@@ -25,22 +26,43 @@ export class HomeComponent {
     return this.ngOnInit();
   }
 
+  onClick(event: any, id: any) {
+    this.video = event.target;
+    console.log(this.video);
+  }
+
+  loadMoreVideos(event) {
+    if (this.pageToken) {
+      this.youtubeservice.getDogs(this.query, 10, this.pageToken).then(data => {
+        if (data) {
+          this.pageToken = data.nextPageToken;
+          data.items.forEach(video => {
+            this.videos.push(video);
+          });
+        }
+      })
+    }
+  }
+
   ngOnInit() {
+    this.search();
+  }
+
+  async search() {
     this.spinner.show()
     setTimeout(() => {
       this.spinner.hide()
     }, 3000)
     this.videos = [];
     //FOR QUOTA LIMIT SAKE ONLY CALL FUNCTION WHEN NEEDED
-    /*this.youtubeservice
-      .getDogs(this.query,10)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(lista => {
+    this.youtubeservice
+      .getDogs(this.query,10, this.pageToken)
+      .then(lista => {
         for (let element of lista["items"]) {
-          this.videos.push(element)
+          this.videos.push(element);
         }
-      })*/
-      console.log(this.videos.length);
+        this.pageToken = lista.nextPageToken;
+      });
   }
 
 }

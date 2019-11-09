@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { YoutubeService } from '../youtube.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'home',
@@ -15,10 +15,11 @@ export class HomeComponent {
 
   videos: any[];
   query: string = '';
-  video: any;
   pageToken: string = null;
 
-  constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService) { }
+  video: string;
+
+  constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService, private dataservice: DataService) { }
 
   //re-search when a new key is pressed
   onKey(event: any) {
@@ -27,13 +28,12 @@ export class HomeComponent {
   }
 
   onClick(event: any, id: any) {
-    this.video = event.target;
-    console.log(this.video);
+    this.dataservice.changeVideo(id.id.videoId);
   }
 
   loadMoreVideos(event) {
     if (this.pageToken) {
-      this.youtubeservice.getDogs(this.query, 10, this.pageToken).then(data => {
+      this.youtubeservice.getDogs(this.query, 5, this.pageToken).then(data => {
         if (data) {
           this.pageToken = data.nextPageToken;
           data.items.forEach(video => {
@@ -61,6 +61,7 @@ export class HomeComponent {
         for (let element of lista["items"]) {
           this.videos.push(element);
         }
+        this.dataservice.changeVideo(this.videos[0].id.videoId);
         this.pageToken = lista.nextPageToken;
       });
   }

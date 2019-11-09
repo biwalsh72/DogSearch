@@ -15,6 +15,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { VideoComponent } from './video/video.component';
 
+import { YoutubeService } from './youtube.service';
+import { DataService } from './data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,7 @@ import { VideoComponent } from './video/video.component';
     FormsModule,
     BrowserAnimationsModule,
     InfiniteScrollModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

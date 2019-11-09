@@ -49,10 +49,6 @@ export class HomeComponent {
   }
 
   async search() {
-    this.spinner.show()
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 3000)
     this.videos = [];
     //FOR QUOTA LIMIT SAKE ONLY CALL FUNCTION WHEN NEEDED
     this.youtubeservice

@@ -4,11 +4,13 @@
 
 <div class="row" id="row4">
   <div class="title">
-    <!--<p class="video-title">
-      <a class = "video-link" href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{ video.snippet.title }}
-      </a></p>-->
+    <p class="video-title">
+      <a class = "video-link" href="https://www.youtube.com/watch?v={{video.id}}">{{ video.snippet.title }}
+      </a></p>
   </div>
   <div class="desc">
-    <p class="description">Description Example</p>
+    <div class="description">
+      <p class="desc-text">{{ video.snippet.description }}</p>
+    </div>
   </div>
 </div>

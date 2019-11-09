@@ -11,10 +11,10 @@
       <li *ngFor="let video of videos" class="video-list" (click)="onClick($event, video)">
           <img [src]="video.snippet.thumbnails.medium.url" class="video-thumbnail" alt="...">
         <p class="video-title">
-          <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
+          <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{ video.snippet.title }}
           </a></p>
         <p class="description">{{ video.snippet.description }}</p>
-        <p hidden>{{ video.snippet.channelTitle }}</p>
+        <p class="hidden" hidden>{{ video.snippet.channelTitle }}</p>
         </li>
         </ul>
     </div>

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import API_KEY from './api-key';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,10 @@ export class YoutubeService {
     + this.api + '&part=snippet&type=video&q=dog+' + query + '&maxResults=' + maxResults + "&pageToken=" + token;
     }
     return this.http.get(this.url).toPromise().then((res) => { return res; });
+  }
+
+  getVideoObject(videoid: string) : Observable<any> {
+    let url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + videoid + '&key=' + this.api;
+    return this.http.get(url).pipe(map((res) => { return res; }));
   }
 }

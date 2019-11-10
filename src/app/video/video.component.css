@@ -86,13 +86,6 @@
   background-color: #616161;
 }
 
-.desc-content {
-  margin: auto;
-  border-radius: 8px;
-  height: 100%;
-  width: 80%;
-}
-
 .desc-text {
   position: relative;
   white-space: pre-line;

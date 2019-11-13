@@ -32,4 +32,9 @@ export class YoutubeService {
     let url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=' + videoid + '&key=' + this.api;
     return this.http.get(url).pipe(map((res) => { return res; }));
   }
+
+  getChannel(channelId: string) : Observable<any> {
+    let url = 'https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=' + channelId + '&key=' + this.api;
+    return this.http.get(url).pipe(map((res) => { return res; }));
+  }
 }

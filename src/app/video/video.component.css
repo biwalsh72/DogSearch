@@ -67,6 +67,7 @@
   background: #d6d6d6;
   overflow: hidden;
   min-width: 100%;
+  position: relative;
 }
 
 .description:hover {
@@ -86,7 +87,8 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  float: left;
+  display: inline-block;
+  /*float: left;*/
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-timing-function: ease-in-out;
@@ -118,27 +120,25 @@
 }
 
 .channel {
-  float: right;
-  min-width: 25%;
-  max-width: 45%;
-  margin-right: .5rem;
+  width: 45%;
+  margin-left: .5rem;
   margin-top: .5rem;
 }
 
 .channel-title {
   background: #ffffff;
   border-radius: 8px;
-  margin: auto;
-  width: auto;
+  margin: 0;
+  width: 45%;
   min-width: 100%;
   padding: .5rem;
 }
 
 .info {
-  margin-right: .5rem;
+  display: inline-block;
+  max-width: 60%;
+  margin-left: .5rem;
   margin-top: .5rem;
-  float: right;
-  width: auto;
 }
 
 .text {
@@ -149,6 +149,10 @@
   background: #ffffff;
   border-radius: 8px;
   padding: .5rem;
+}
+
+.views {
+  font-size: 20px;
 }
 
 .hvr-underline-reveal {
@@ -185,4 +189,28 @@
 .hvr-underline-reveal:active:before {
   -webkit-transform: translateY(0);
   transform: translateY(0);
+}
+
+.other-info {
+  position: absolute;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+}
+
+.video-info {
+  width: 100%;
+  margin-right: 0;
+}
+
+.channel-picture {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin-left: 5rem;
+  top: 0;
+}
+
+.channel-profile {
+  display: inline-block;
 }

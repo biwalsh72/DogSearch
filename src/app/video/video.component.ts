@@ -19,6 +19,9 @@ export class VideoComponent implements OnInit {
   videos: any[];
   video: string;
   videoid: string;
+  channelid: string;
+  channels: any[];
+  temp: string;
   embedurlSafe: SafeResourceUrl;
   subscription: Subscription;
   private api = API_KEY.API_KEY.apikey;
@@ -45,7 +48,20 @@ export class VideoComponent implements OnInit {
         this.videos.push(element);
       }
       this.video = this.videos[0];
+      this.channel(this.videos[0].snippet.channelId);
     });
   }
+
+  async channel(id: string) {
+    this.videos = [];
+    this.youtubeservice
+    .getChannel(id)
+    .subscribe(lista => {
+      for (let element of lista["items"]) {
+        this.videos.push(element);
+      }
+      this.channelid = this.videos[0];
+  });
+}
 
 }

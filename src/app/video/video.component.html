@@ -12,13 +12,18 @@
     <div class="description">
       <p class="desc-text">{{ video.snippet.description }}</p>
     </div>
-    <div class="channel">
-      <p class="channel-title">Uploaded by: {{ video.snippet.channelTitle }}</p>
-    </div>
-    <div class="info">
-      <div class="text">
-      <p class="video-info">Date Uploaded: {{ video.snippet.publishedAt }}</p>
-      <p class="video-info">Views: {{ video.statistics.viewCount }}</p>
+    <div class="other-info">
+      <div class="channel">
+        <p class="video-info channel-title">Uploaded by: {{ video.snippet.channelTitle }}</p>
+      </div>
+      <div class="info">
+        <div class="text">
+          <p class="video-info">Date Uploaded: {{ video.snippet.publishedAt }}</p>
+          <p class="video-info views">Views: {{ video.statistics.viewCount }}</p>
+        </div>
+        <div class="channel-profile">
+          <img [src]="channelid.snippet.thumbnails.medium.url" class="channel-picture" alt="...">
+        </div>
       </div>
     </div>
   </div>

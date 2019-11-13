@@ -22,7 +22,7 @@ export class HomeComponent {
   constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService, private dataservice: DataService) { }
 
   //re-search when a new key is pressed
-  onKey(event: any) {
+  onSubmit(event: any) {
     this.query = event.target.value;
     return this.ngOnInit();
   }

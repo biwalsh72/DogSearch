@@ -29,7 +29,7 @@ export class YoutubeService {
   }
 
   getVideoObject(videoid: string) : Observable<any> {
-    let url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + videoid + '&key=' + this.api;
+    let url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=' + videoid + '&key=' + this.api;
     return this.http.get(url).pipe(map((res) => { return res; }));
   }
 }

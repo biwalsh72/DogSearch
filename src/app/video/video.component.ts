@@ -38,7 +38,7 @@ export class VideoComponent implements OnInit {
   }
 
   async onOutside(e: Event) {
-    setTimeout(function() {
+    setTimeout(function () {
       this.showVideo = false;
     }, 20);
   }
@@ -62,7 +62,7 @@ export class VideoComponent implements OnInit {
         }
         this.video = this.videos[0];
         if (this.video !== undefined) {
-        this.channel(this.videos[0].snippet.channelId);
+          this.channel(this.videos[0].snippet.channelId);
         }
       });
   }

@@ -11,7 +11,7 @@ import { DataService } from '../data.service';
 })
 export class HomeComponent {
   title = 'Dog Search';
-  private unsubscribe$: Subject<any> = new Subject();
+  private unsubscribe$: Subject < any > = new Subject();
 
   videos: any[];
   query: string = '';
@@ -19,7 +19,7 @@ export class HomeComponent {
 
   video: string;
 
-  constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService, private dataservice: DataService) { }
+  constructor(private spinner: NgxSpinnerService, private youtubeservice: YoutubeService, private dataservice: DataService) {}
 
   //re-search when a new key is pressed
   onSubmit(event: any) {
@@ -57,7 +57,7 @@ export class HomeComponent {
     this.videos = [];
     //FOR QUOTA LIMIT SAKE ONLY CALL FUNCTION WHEN NEEDED
     this.youtubeservice
-      .getDogs(this.query,10, this.pageToken)
+      .getDogs(this.query, 10, this.pageToken)
       .then(lista => {
         for (let element of lista["items"]) {
           this.videos.push(element);

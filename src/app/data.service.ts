@@ -6,10 +6,10 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  private video = new BehaviorSubject<string>('default value');
+  private video = new BehaviorSubject < string > ('default value');
   currentVideo = this.getCurrentVideo();
 
-  constructor() { }
+  constructor() {}
 
   //update behaviorsubject value and notify all subscribers
   changeVideo(id: string) {
@@ -17,7 +17,7 @@ export class DataService {
   }
 
   //return the current behavior subject value as an observable to be used in component functions
-  getCurrentVideo() : Observable<string> {
+  getCurrentVideo(): Observable < string > {
     return this.video.asObservable();
   }
 }

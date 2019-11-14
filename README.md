@@ -4,6 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 #### Requirements for running
 - AngularJS
+- Youtube Data API Key (see https://developers.google.com/youtube/v3/getting-started for info)
 
 The web application is made up of two components and two services.
 

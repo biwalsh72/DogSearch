@@ -11,10 +11,12 @@ export class DataService {
 
   constructor() { }
 
+  //update behaviorsubject value and notify all subscribers
   changeVideo(id: string) {
     this.video.next(id);
   }
 
+  //return the current behavior subject value as an observable to be used in component functions
   getCurrentVideo() : Observable<string> {
     return this.video.asObservable();
   }

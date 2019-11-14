@@ -27,10 +27,12 @@ export class HomeComponent {
     return this.ngOnInit();
   }
 
+  //send videoid of video that was clicked in the home component to the data service
   onClick(event: any, id: any) {
     this.dataservice.changeVideo(id.id.videoId);
   }
 
+  //when bottom of container is detected call for more dog videos on the next page token
   loadMoreVideos(event) {
     if (this.pageToken) {
       this.youtubeservice.getDogs(this.query, 5, this.pageToken).then(data => {
@@ -44,10 +46,13 @@ export class HomeComponent {
     }
   }
 
+  //search for 'dog' videos when loading the page
   ngOnInit() {
     this.search();
   }
 
+  //access youtube service function that retrieves Observable video object and convert it to list
+  //for use in html
   async search() {
     this.videos = [];
     //FOR QUOTA LIMIT SAKE ONLY CALL FUNCTION WHEN NEEDED

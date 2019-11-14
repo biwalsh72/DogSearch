@@ -5,7 +5,8 @@
 <div class="row" id="row4">
   <div class="title">
     <p class="video-title hvr-underline-reveal">
-      <a class="video-link" href="https://www.youtube.com/watch?v={{video.id}}">{{ video.snippet.title }}
+      <a class="video-link" href="https://www.youtube.com/watch?v={{video.id}}"
+        target="_blank">{{ video.snippet.title }}
       </a></p>
   </div>
   <div class="desc">
@@ -13,18 +14,28 @@
       <p class="desc-text">{{ video.snippet.description }}</p>
     </div>
     <div class="other-info">
-      <div class = "info">
-      <div class="channel">
-        <p class="video-info channel-title">Uploaded by: <b>{{ video.snippet.channelTitle }}</b></p>
+      <div class="info">
+        <div class="channel">
+          <p class="video-info channel-title">Uploaded by: <b>{{ video.snippet.channelTitle }}</b></p>
+        </div>
+        <div class="text">
+          <p class="video-info">Uploaded: {{ video.snippet.publishedAt }}</p>
+          <p class="video-info views">Views: {{ video.statistics.viewCount }}</p>
+        </div>
+        <div class="channel-profile">
+          <a href="https://www.youtube.com/channel/{{video.snippet.channelId}}" target="_blank"><img
+              [src]="channelid.snippet.thumbnails.medium.url" class="channel-picture" alt="..."></a>
+        </div>
       </div>
-      <div class="text">
-        <p class="video-info">Uploaded: {{ video.snippet.publishedAt }}</p>
-        <p class="video-info views">Views: {{ video.statistics.viewCount }}</p>
-      </div>
-      <div class="channel-profile">
-        <img [src]="channelid.snippet.thumbnails.medium.url" class="channel-picture" alt="...">
+      <div class="fullscreen-button">
+        <button class="fullscreen hvr-hang" (click)="showVideo =! showVideo">
+          Fullscreen &#8593;
+          </button>
       </div>
     </div>
-    </div>
+  </div>
+  <div *ngIf="showVideo" id="page-mask"></div>
+  <div *ngIf="showVideo" (clickOutside)="onOutside($event)">
+    <iframe [src]="embedurlSafe" class="fullscreen-video"></iframe>
   </div>
 </div>

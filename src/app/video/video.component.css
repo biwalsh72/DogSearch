@@ -232,7 +232,8 @@
   text-align: center;
 }
 
-.text:hover, .channel:hover {
+.text:hover,
+.channel:hover {
   transform: scale(1.02);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -240,4 +241,124 @@
   transition-timing-function: ease-in-out;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.fullscreen-button {
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  height: 10%;
+}
+
+.fullscreen {
+  width: 70%;
+  background: #F5F5F5;
+  border: none;
+  box-shadow: none;
+  height: 100%;
+}
+
+@-webkit-keyframes hvr-hang {
+  0% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+
+  50% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+
+@keyframes hvr-hang {
+  0% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+
+  50% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+
+@-webkit-keyframes hvr-hang-sink {
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+
+@keyframes hvr-hang-sink {
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+
+.hvr-hang {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.hvr-hang:hover,
+.hvr-hang:focus,
+.hvr-hang:active {
+  -webkit-animation-name: hvr-hang-sink, hvr-hang;
+  animation-name: hvr-hang-sink, hvr-hang;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
+}
+
+.fullscreen-video {
+  position: fixed;
+  width: 90%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 90%;
+  z-index: 9999;
+  border: none;
+  border-radius: 7px;
+}
+
+#page-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 9998;
+  background-color: rgba(0,0,0,0.25);
+}
+
+.hide {
+  display: none;
 }

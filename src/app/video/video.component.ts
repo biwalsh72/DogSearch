@@ -15,13 +15,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class VideoComponent implements OnInit {
 
+  showVideo = false;
   url: string;
   videos: any[];
   video: string;
   videoid: string;
   channelid: string;
   channels: any[];
-  temp: string;
   embedurlSafe: SafeResourceUrl;
   subscription: Subscription;
   private api = API_KEY.API_KEY.apikey;
@@ -29,9 +29,15 @@ export class VideoComponent implements OnInit {
   constructor(private youtubeservice: YoutubeService, private dataservice: DataService, private http: HttpClient, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
+    //subscribes to value change in home component when user clicks on a video and calls changeValue function
     this.subscription = this.dataservice.currentVideo.subscribe(video => this.changeValue(video));
   }
 
+  onOutside(e: Event) {
+    this.showVideo = false;
+  }
+
+  //changes embedded player value every time the user selects a video in the home component
   changeValue(video: string) {
     this.videoid = video;
     let embedurl = 'https://www.youtube.com/embed/' + this.videoid + '?autoplay=1';
@@ -39,29 +45,31 @@ export class VideoComponent implements OnInit {
     this.func();
   }
 
+  //retrieves the full video object of the id retrieved from the home component
   async func() {
     this.videos = [];
     this.youtubeservice
-    .getVideoObject(this.videoid)
-    .subscribe(lista => {
-      for (let element of lista["items"]) {
-        this.videos.push(element);
-      }
-      this.video = this.videos[0];
-      this.channel(this.videos[0].snippet.channelId);
-    });
+      .getVideoObject(this.videoid)
+      .subscribe(lista => {
+        for (let element of lista["items"]) {
+          this.videos.push(element);
+        }
+        this.video = this.videos[0];
+        this.channel(this.videos[0].snippet.channelId);
+      });
   }
 
+  //retrives youtube channel info object from the id provded by the video snippet
   async channel(id: string) {
     this.videos = [];
     this.youtubeservice
-    .getChannel(id)
-    .subscribe(lista => {
-      for (let element of lista["items"]) {
-        this.videos.push(element);
-      }
-      this.channelid = this.videos[0];
-  });
-}
+      .getChannel(id)
+      .subscribe(lista => {
+        for (let element of lista["items"]) {
+          this.videos.push(element);
+        }
+        this.channelid = this.videos[0];
+      });
+  }
 
 }

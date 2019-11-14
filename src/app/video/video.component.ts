@@ -61,7 +61,9 @@ export class VideoComponent implements OnInit {
           this.videos.push(element);
         }
         this.video = this.videos[0];
+        if (this.video !== undefined) {
         this.channel(this.videos[0].snippet.channelId);
+        }
       });
   }
 

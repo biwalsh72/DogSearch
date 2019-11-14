@@ -23,7 +23,7 @@
           <p *ngIf="video !== undefined" class="video-info views">Views: {{ video.statistics.viewCount }}</p>
         </div>
         <div class="channel-profile">
-          <a *ngIf="video !== undefined" href="https://www.youtube.com/channel/{{video.snippet.channelId}}" target="_blank"><img
+          <a *ngIf="video !== undefined && channelid !== undefined" href="https://www.youtube.com/channel/{{video.snippet.channelId}}" target="_blank"><img
               [src]="channelid.snippet.thumbnails.medium.url" class="channel-picture" alt="..."></a>
         </div>
       </div>

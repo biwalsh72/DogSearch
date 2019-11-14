@@ -8,7 +8,7 @@
     <div class="column" id="searchResults" infiniteScroll [infiniteScrollDistance]=".5" [infiniteScrollThrottle]="50" (scrolled)="loadMoreVideos($event)" [scrollWindow]="false">
       <p class="searchterm">Current Search: dog {{ query }}</p>
       <ul style="list-style: none" class="videos" id="videoss">
-      <li *ngFor="let video of videos; let i = index" [style.background]="selected==i?'AliceBlue':'white'" class="video-list hvr-grow" (click)="onClick($event, video); selected=i">
+      <li *ngFor="let video of videos; let i = index" [style.background]="selected==i?'AliceBlue':'white'" class="video-list hvr-grow animated fadeIn" (click)="onClick($event, video); selected=i">
           <img [src]="video.snippet.thumbnails.medium.url" class="video-thumbnail" alt="...">
         <p class="video-title"><b>{{ video.snippet.title }}</b></p>
         <p class="description">{{ video.snippet.description }}</p>

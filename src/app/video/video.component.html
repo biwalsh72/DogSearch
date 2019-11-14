@@ -1,41 +1,42 @@
 <div class="row" id="row3">
-  <iframe class="player" [src]="embedurlSafe"></iframe>
+  <iframe *ngIf="!showVideo" class="player animated fadeIn" [src]="embedurlSafe"></iframe>
 </div>
 
 <div class="row" id="row4">
   <div class="title">
     <p class="video-title hvr-underline-reveal">
-      <a class="video-link" href="https://www.youtube.com/watch?v={{video.id}}"
+      <a *ngIf="video !== undefined"class="video-link" href="https://www.youtube.com/watch?v={{video.id}}"
         target="_blank">{{ video.snippet.title }}
       </a></p>
   </div>
   <div class="desc">
     <div class="description">
-      <p class="desc-text">{{ video.snippet.description }}</p>
+      <p *ngIf="video !== undefined" class="desc-text">{{ video.snippet.description }}</p>
     </div>
-    <div class="other-info">
+    <div class="other-info animated fadeIn">
       <div class="info">
         <div class="channel">
-          <p class="video-info channel-title">Uploaded by: <b>{{ video.snippet.channelTitle }}</b></p>
+          <p *ngIf="video !== undefined" class="video-info channel-title">Uploaded by: <b>{{ video.snippet.channelTitle }}</b></p>
         </div>
         <div class="text">
-          <p class="video-info">Uploaded: {{ video.snippet.publishedAt }}</p>
-          <p class="video-info views">Views: {{ video.statistics.viewCount }}</p>
+          <p *ngIf="video !== undefined" class="video-info">Uploaded: {{ video.snippet.publishedAt }}</p>
+          <p *ngIf="video !== undefined" class="video-info views">Views: {{ video.statistics.viewCount }}</p>
         </div>
         <div class="channel-profile">
-          <a href="https://www.youtube.com/channel/{{video.snippet.channelId}}" target="_blank"><img
+          <a *ngIf="video !== undefined" href="https://www.youtube.com/channel/{{video.snippet.channelId}}" target="_blank"><img
               [src]="channelid.snippet.thumbnails.medium.url" class="channel-picture" alt="..."></a>
         </div>
       </div>
       <div class="fullscreen-button">
-        <button class="fullscreen hvr-hang" (click)="showVideo =! showVideo">
+        <button class="fullscreen hvr-hang" (click)="toggleVideo()">
           Fullscreen &#8593;
-          </button>
+        </button>
       </div>
     </div>
   </div>
-  <div *ngIf="showVideo" id="page-mask"></div>
-  <div *ngIf="showVideo" (clickOutside)="onOutside($event)">
-    <iframe [src]="embedurlSafe" class="fullscreen-video"></iframe>
+  <div *ngIf="showVideo" id="page-mask" class="animated fadeIn fast"></div>
+  <div *ngIf="showVideo" (clickOutside)="onOutside($event)" style="z-index: 9999">
+    <iframe [src]="embedurlSafe" class="animated fadeIn" id="fullscreen-video"></iframe>
   </div>
+  <div class = "exit" *ngIf="showVideo"><button class="video-exit" (click)="toggleVideo()">X</button></div>
 </div>

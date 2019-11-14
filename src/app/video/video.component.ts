@@ -33,8 +33,14 @@ export class VideoComponent implements OnInit {
     this.subscription = this.dataservice.currentVideo.subscribe(video => this.changeValue(video));
   }
 
-  onOutside(e: Event) {
-    this.showVideo = false;
+  toggleVideo() {
+    this.showVideo = !this.showVideo;
+  }
+
+  async onOutside(e: Event) {
+    setTimeout(function() {
+      this.showVideo = false;
+    }, 20);
   }
 
   //changes embedded player value every time the user selects a video in the home component

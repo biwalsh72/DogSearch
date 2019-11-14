@@ -51,7 +51,7 @@
 }
 
 .video-list {
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .hvr-grow {
@@ -86,6 +86,7 @@
 .video-title {
   margin: 0;
   font-size: 15px;
+  color: #32405f;
 }
 
 #searchResults::-webkit-scrollbar {
